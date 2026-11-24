@@ -1,12 +1,10 @@
 <!DOCTYPE html>
-<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
-<meta content="utf-8" http-equiv="encoding">
-<meta charset="utf-8">
 <html lang="en">
 <head>
 
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Hellmouth VIII Cup</title>
-    <meta charset="utf-8" />
 
     <script>
         var baseUIUrl  = 'https://viii.integration.golly456.life';
@@ -24,22 +22,22 @@
 
     <!--
         Versions:
-        gollyx-viii-pelican: 807.dev0
-        gollyx-viii-pelican-theme: 800.0
+        gollyx-viii-pelican: 807.0
     -->
 
+    <link href="https://viii.integration.golly456.life/theme/css/gollyx.css" rel="stylesheet" type="text/css">
 
 </head>
 <body id="index">
 
 <!-- Navigation -->
-<div id="navbar-div-top-level" class="navbar navbar-expand-md fixed-top navbar-dark bg-primary">
+<div id="navbar-div-top-level" class="navbar navbar-expand-lg sticky-top navbar-dark site-nav">
 
   <div id="navbar-div-container" class="container">
 
     <a href="https://viii.integration.golly456.life/" class="navbar-brand">
-      <img class="navbar-brand-logo" type="image/png" width="25px" src="https://viii.integration.golly456.life/theme/img/hellmouth-cup.png" alt="logo" />
-      Hellmouth VIII Cup
+      <img class="navbar-brand-logo" src="https://viii.integration.golly456.life/theme/img/hellmouth-cup.png" alt="" width="28" height="28">
+      <span class="navbar-brand-text">Hellmouth VIII Cup</span>
     </a>
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -50,7 +48,7 @@
     <div class="collapse navbar-collapse" id="navbarResponsive">
 
       <!-- begin list of navbar buttons -->
-      <ul class="navbar-nav">
+      <ul class="navbar-nav ml-auto">
 
         <!--
         pages order:
@@ -96,7 +94,7 @@
               Teams<span class="caret"></span>
           </a>
           <div id="navbar-explore-dropdown-menu" class="dropdown-menu dropdown-menu-right" aria-labelledby="themes">
-            <div class="row" style="width: 500px;">
+            <div class="row teams-menu">
               <ul class="list-unstyled col-md-6">
                   <li><a class="dropdown-item" href="https://wiki.golly.life/wiki/Alewife_Arsonists">Alewife Arsonists</a></li>
                   <li><a class="dropdown-item" href="https://wiki.golly.life/wiki/Albuquerque_Solarpunks">Albuquerque Solarpunks</a></li>
@@ -140,7 +138,8 @@
           <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="themes">
               About<span class="caret"></span>
           </a>
-          <div id="navbar-about-dropdown-menu" class="dropdown-menu" aria-labelledby="themes">
+          <div id="navbar-about-dropdown-menu" class="dropdown-menu dropdown-menu-right" aria-labelledby="themes">
+            <a class="dropdown-item" href="https://golly.life">All Golly Cups</a>
             <a class="dropdown-item" href="https://wiki.golly.life">Golly.Life Wiki</a>
             <a class="dropdown-item"
                 href="https://wiki.golly.life/wiki/Hellmouth_VIII_Cup">About the Hellmouth VIII Cup</a>
@@ -153,6 +152,7 @@
     </div>
   </div>
 </div>
+<main class="page">
 
 
 <div class="container" id="container-golly-header">
@@ -471,6 +471,7 @@
   </div>
 </noscript>
 
+</main>
 
 <script type="text/javascript" src="https://viii.integration.golly456.life/theme/js/geturl.js"></script>
 <script type="text/javascript" src="https://viii.integration.golly456.life/theme/js/tables.js"></script>
@@ -481,17 +482,13 @@
 <script src="https://viii.integration.golly456.life/theme/js/json-sans-eval.js"></script>
 <script src="viii.js"></script>
 
-<footer id="contentinfo" class="body">
-    <div class="text-center">
-    <p>Golly is a product of the Metablaseball Research Laboratory at Hellmouth Community College</p>
-
-    <p>Golly.Life Chief Architect: Ch4zm of Hellmouth</p>
-
-    <p>Golly Commissioner: Rubrix Helicopter</p>
-
-    <p>
-        Licensed under the <a rel="license" href="https://mit-license.org/">MIT License</a> - <a href="https://github.com/golly-splorts/gollyx-viii-pelican/blob/main/ATTRIBUTION">Attribution</a>
-    </p>
+<footer id="contentinfo" class="site-footer">
+    <div class="site-footer-inner">
+      <a class="site-footer-cups" href="https://golly.life">All Golly cups at golly.life</a>
+      <p>Golly is a product of the Metablaseball Research Laboratory at Hellmouth Community College</p>
+      <p>Golly.Life Chief Architect: <a href="https://github.com/ch4zm">Ch4zm of Hellmouth</a></p>
+      <p>Golly Commissioner: Rubrix Helicopter</p>
+      <p>Licensed under the <a rel="license" href="https://mit-license.org/">MIT License</a> - <a href="https://github.com/golly-splorts/gollyx-viii-pelican/blob/main/ATTRIBUTION">Attribution</a></p>
     </div>
 
 <!-- Default Statcounter code for Golly https://golly.life -->

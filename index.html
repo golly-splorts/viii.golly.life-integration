@@ -1,12 +1,10 @@
 <!DOCTYPE html>
-<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
-<meta content="utf-8" http-equiv="encoding">
-<meta charset="utf-8">
 <html lang="en">
 <head>
 
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Hellmouth VIII Cup</title>
-    <meta charset="utf-8" />
 
     <script>
         var baseUIUrl  = 'https://viii.integration.golly456.life';
@@ -24,25 +22,25 @@
 
     <!--
         Versions:
-        gollyx-viii-pelican: 807.dev0
-        gollyx-viii-pelican-theme: 800.0
+        gollyx-viii-pelican: 807.0
     -->
 
 <link href="https://viii.integration.golly456.life/theme/css/flipdown.min.css"  rel="stylesheet" type="text/css">
     <!-- re-include custom.css to override some flipdown.css settings -->
     <link href="https://viii.integration.golly456.life/theme/css/custom.css"  rel="stylesheet" type="text/css">
+    <link href="https://viii.integration.golly456.life/theme/css/gollyx.css" rel="stylesheet" type="text/css">
 
 </head>
 <body id="index">
 
 <!-- Navigation -->
-<div id="navbar-div-top-level" class="navbar navbar-expand-md fixed-top navbar-dark bg-primary">
+<div id="navbar-div-top-level" class="navbar navbar-expand-lg sticky-top navbar-dark site-nav">
 
   <div id="navbar-div-container" class="container">
 
     <a href="https://viii.integration.golly456.life/" class="navbar-brand">
-      <img class="navbar-brand-logo" type="image/png" width="25px" src="https://viii.integration.golly456.life/theme/img/hellmouth-cup.png" alt="logo" />
-      Hellmouth VIII Cup
+      <img class="navbar-brand-logo" src="https://viii.integration.golly456.life/theme/img/hellmouth-cup.png" alt="" width="28" height="28">
+      <span class="navbar-brand-text">Hellmouth VIII Cup</span>
     </a>
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -53,7 +51,7 @@
     <div class="collapse navbar-collapse" id="navbarResponsive">
 
       <!-- begin list of navbar buttons -->
-      <ul class="navbar-nav">
+      <ul class="navbar-nav ml-auto">
 
         <!--
         pages order:
@@ -99,7 +97,7 @@
               Teams<span class="caret"></span>
           </a>
           <div id="navbar-explore-dropdown-menu" class="dropdown-menu dropdown-menu-right" aria-labelledby="themes">
-            <div class="row" style="width: 500px;">
+            <div class="row teams-menu">
               <ul class="list-unstyled col-md-6">
                   <li><a class="dropdown-item" href="https://wiki.golly.life/wiki/Alewife_Arsonists">Alewife Arsonists</a></li>
                   <li><a class="dropdown-item" href="https://wiki.golly.life/wiki/Albuquerque_Solarpunks">Albuquerque Solarpunks</a></li>
@@ -143,7 +141,8 @@
           <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="themes">
               About<span class="caret"></span>
           </a>
-          <div id="navbar-about-dropdown-menu" class="dropdown-menu" aria-labelledby="themes">
+          <div id="navbar-about-dropdown-menu" class="dropdown-menu dropdown-menu-right" aria-labelledby="themes">
+            <a class="dropdown-item" href="https://golly.life">All Golly Cups</a>
             <a class="dropdown-item" href="https://wiki.golly.life">Golly.Life Wiki</a>
             <a class="dropdown-item"
                 href="https://wiki.golly.life/wiki/Hellmouth_VIII_Cup">About the Hellmouth VIII Cup</a>
@@ -156,24 +155,23 @@
     </div>
   </div>
 </div>
+<main class="page">
 
 <template id="minilife-template">
 <!-- minilife include template -->
 <div class="row justify-content-lg-center">
   <div class="col-md-4">
     <div>
-      <h3 style="color: #eee;">minilife</h3>
+      <h3 class="minilife-title">minilife</h3>
     </div>
     <div>
-      <button type="button" id="buttonRun"   class="btn btn-sm btn-success btn-secondary">Run</button>
-      <button type="button" id="buttonStep"  class="btn btn-sm btn-default btn-secondary">Step</button>
-      <button type="button" id="buttonClear" class="btn btn-sm btn-default btn-secondary">Clear</button>
+      <button type="button" id="buttonRun"   class="btn btn-sm btn-success">Run</button>
+      <button type="button" id="buttonStep"  class="btn btn-sm btn-ghost">Step</button>
+      <button type="button" id="buttonClear" class="btn btn-sm btn-ghost">Clear</button>
     </div>
-    <div>
-      Generation: <span id="generation"></span>
-    </div>
-    <div>
-      Live Cells: <span id="livecells"></span>
+    <div class="minilife-stats">
+      <span>Generation <b id="generation"></b></span>
+      <span>Live cells <b id="livecells"></b></span>
     </div>
   </div>
 </div>
@@ -181,7 +179,7 @@
 <div class="row justify-content-lg-center">
   <div class="col-md-4">
     <noscript>You must enable Javascript to play minilife.</noscript>
-    <canvas id="canvas" width="400" height="400">
+    <canvas id="canvas" width="400" height="400"></canvas>
   </div>
 </div>
 
@@ -195,198 +193,129 @@ add this to pelican pages:
 
 <template id="finished-game-template">
         <!-- finished game template -->
-        <div class="card text-white game-card finished-game-card">
+        <div class="card game-card finished-game-card">
           <div class="card-body game-card-body finished-game-card-body">
-
-            <div class="game-card-team1 finished-game-card-team1">
-              <table width="100%">
-                <tr>
-                  <td> 
-                    <h6 class="game-card-team-name-header">
-                      <span class="team1color team1name">Team 1</span> <small><span class="team1color team1record">(W-L)</span></small>
-                    </h6>
-                  </td>
-                  <td align="right">
-                    <h6 class="game-card-team-name-header">
-                      <span class="team1color livecells1">100</span>
-                    </h6>
-                  </td>
-                </tr>
-              </table>
+            <div class="game-card-team game-card-team1 finished-game-card-team1">
+              <span class="team-swatch team1color"></span>
+              <span class="game-card-team-name"><span class="team1color team1name">Team 1</span> <span class="game-card-record team1record"></span></span>
+              <span class="game-card-score livecells1">0</span>
             </div>
-
-            <div class="game-card-team2 finished-game-card-team2">
-              <table width="100%">
-                <tr>
-                  <td> 
-                    <h6 class="game-card-team-name-header">
-                      <span class="team2color team2name">Team 2</span> <small><span class="team2color team2record">(W-L)</span></small>
-                    </h6>
-                  </td>
-                  <td align="right">
-                    <h6 class="game-card-team-name-header">
-                      <span class="team2color livecells2">2</span>
-                    </h6>
-                  </td>
-                </tr>
-              </table>
+            <div class="game-card-team game-card-team2 finished-game-card-team2">
+              <span class="team-swatch team2color"></span>
+              <span class="game-card-team-name"><span class="team2color team2name">Team 2</span> <span class="game-card-record team2record"></span></span>
+              <span class="game-card-score livecells2">0</span>
             </div>
-
-            <div class="game-card-map finished-game-card-map">
-              Map: <span class="map-name">Map Name</span>
+            <div class="game-card-meta">
+              <span class="game-card-map finished-game-card-map"><span class="game-card-label">Map</span> <span class="map-name">Map Name</span></span>
+              <span class="game-card-gens"><span class="generations-number"></span> generations</span>
             </div>
-
-            <div class="game-card-map finished-game-card-map">
-              <span class="generations-number"></span> Generations
-            </div>
-
-            <div class="game-card-map finished-game-card-simulate">
-              <a href="#" style="margin-top: 20px;" role="button" class="simulate btn btn-primary btn-sm btn-success">View Simulation</a>
+            <div class="game-card-actions finished-game-card-simulate">
+              <a href="#" role="button" class="simulate btn btn-sm btn-sim">View Simulation</a>
             </div>
           </div>
         </div></template>
 
 <template id="finished-postgame-template">
         <!-- postseason finished game template -->
-        <div class="card text-white game-card finished-game-card postseason-game-card">
+        <div class="card game-card finished-game-card postseason-game-card">
           <div class="card-body game-card-body finished-game-card-body">
-            <h5 class="card-title game-card-description postseason-game-card-description"><span class="postseason-game-description"></span></h5>
-
-            <div class="game-card-team1 finished-game-card-team1">
-              <table width="100%">
-                <tr>
-                  <td> 
-                    <h6 class="game-card-team-name-header">
-                      <span class="team1color team1name">Team 1</span> <small><span class="team1color team1seriesrecord">(W-L)</span></small>
-                    </h6>
-                  </td>
-                  <td align="right">
-                    <h6 class="game-card-team-name-header">
-                      <span class="team1color livecells1">100</span>
-                    </h6>
-                  </td>
-                </tr>
-              </table>
+            <div class="game-card-description postseason-game-card-description"><span class="postseason-game-description"></span></div>
+            <div class="game-card-team game-card-team1 finished-game-card-team1">
+              <span class="team-swatch team1color"></span>
+              <span class="game-card-team-name"><span class="team1color team1name">Team 1</span> <span class="game-card-record team1seriesrecord"></span></span>
+              <span class="game-card-score livecells1">0</span>
             </div>
-
-            <div class="game-card-team2 finished-game-card-team2">
-              <table width="100%">
-                <tr>
-                  <td> 
-                    <h6 class="game-card-team-name-header">
-                      <span class="team2color team2name">Team 2</span> <small><span class="team2color team2seriesrecord">(W-L)</span></small>
-                    </h6>
-                  </td>
-                  <td align="right">
-                    <h6 class="game-card-team-name-header">
-                      <span class="team2color livecells2">2</span>
-                    </h6>
-                  </td>
-                </tr>
-              </table>
+            <div class="game-card-team game-card-team2 finished-game-card-team2">
+              <span class="team-swatch team2color"></span>
+              <span class="game-card-team-name"><span class="team2color team2name">Team 2</span> <span class="game-card-record team2seriesrecord"></span></span>
+              <span class="game-card-score livecells2">0</span>
             </div>
-
-            <div class="game-card-map finished-game-card-map">
-              Map: <span class="map-name">Map Name</span>
+            <div class="game-card-meta">
+              <span class="game-card-map finished-game-card-map"><span class="game-card-label">Map</span> <span class="map-name">Map Name</span></span>
+              <span class="game-card-gens"><span class="generations-number"></span> generations</span>
             </div>
-
-            <div class="game-card-map finished-game-card-map">
-              <span class="generations-number"></span> Generations
-            </div>
-
-            <div class="game-card-map finished-game-card-simulate">
-              <a href="#" style="margin-top: 20px;" role="button" class="simulate btn btn-primary btn-sm btn-success">View Simulation</a>
+            <div class="game-card-actions finished-game-card-simulate">
+              <a href="#" role="button" class="simulate btn btn-sm btn-sim">View Simulation</a>
             </div>
           </div>
         </div></template>
 
 <template id="inprogress-game-template">
         <!-- in progress game template -->
-        <div class="card text-white game-card inprogress-game-card">
+        <div class="card game-card inprogress-game-card">
           <div class="card-body game-card-body inprogress-game-card-body">
-
-            <div class="game-card-team1 inprogress-game-card-team1">
-              <h6 class="game-card-team-name-header">
-                <span class="team1color team1name">Team 1</span> <small><span class="team1color team1record">(W-L)</span></small>
-              </h6>
+            <div class="game-card-team game-card-team1 inprogress-game-card-team1">
+              <span class="team-swatch team1color"></span>
+              <span class="game-card-team-name"><span class="team1color team1name">Team 1</span> <span class="game-card-record team1record"></span></span>
             </div>
-            <div class="game-card-team2 inprogress-game-card-team2">
-              <h6 class="game-card-team-name-header">
-                <span class="team2color team2name">Team 2</span> <small><span class="team2color team2record">(W-L)</span></small>
-              </h6>
+            <div class="game-card-team game-card-team2 inprogress-game-card-team2">
+              <span class="team-swatch team2color"></span>
+              <span class="game-card-team-name"><span class="team2color team2name">Team 2</span> <span class="game-card-record team2record"></span></span>
             </div>
-            <div class="game-card-map inprogress-game-card-map">
-              Map: <span class="map-name">Map Name</span>
+            <div class="game-card-meta">
+              <span class="game-card-map inprogress-game-card-map"><span class="game-card-label">Map</span> <span class="map-name">Map Name</span></span>
             </div>
-            <div class="game-card-map inprogress-game-card-simulate">
-              <a href="#" style="margin-top: 20px;" role="button" class="simulate btn btn-primary btn-sm btn-success">View Simulation</a>
+            <div class="game-card-actions inprogress-game-card-simulate">
+              <a href="#" role="button" class="simulate btn btn-sm btn-sim">View Simulation</a>
             </div>
           </div>
         </div></template>
 
 <template id="inprogress-postgame-template">
         <!-- postseason in progress template -->
-        <div class="card text-white game-card inprogress-game-card postseason-game-card">
+        <div class="card game-card inprogress-game-card postseason-game-card">
           <div class="card-body game-card-body inprogress-game-card-body postseason-game-card-body">
-            <h5 class="card-title game-card-description postseason-game-card-description"><span class="postseason-game-description">Game _, _ Series</span></h5>
-
-            <div class="game-card-team1 inprogress-game-card-team1">
-              <h6 class="game-card-team-name-header">
-                <span class="team1color team1name">Team 1</span> <small><span class="team1color team1seed">(0)</span></small>
-              </h6>
+            <div class="game-card-description postseason-game-card-description"><span class="postseason-game-description"></span></div>
+            <div class="game-card-team game-card-team1 inprogress-game-card-team1">
+              <span class="team-swatch team1color"></span>
+              <span class="game-card-team-name"><span class="team1color team1name">Team 1</span> <span class="game-card-record team1seed"></span></span>
             </div>
-            <div class="game-card-team2 inprogress-game-card-team2">
-              <h6 class="game-card-team-name-header">
-                <span class="team2color team2name">Team 2</span> <small><span class="team2color team2seed">(0)</span></small>
-              </h6>
+            <div class="game-card-team game-card-team2 inprogress-game-card-team2">
+              <span class="team-swatch team2color"></span>
+              <span class="game-card-team-name"><span class="team2color team2name">Team 2</span> <span class="game-card-record team2seed"></span></span>
             </div>
-            <div class="game-card-map inprogress-game-card-map">
-              Map: <span class="map-name">Map Name</span>
+            <div class="game-card-meta">
+              <span class="game-card-map inprogress-game-card-map"><span class="game-card-label">Map</span> <span class="map-name">Map Name</span></span>
             </div>
-            <div class="game-card-map inprogress-game-card-simulate">
-              <a href="#" style="margin-top: 20px;" role="button" class="simulate btn btn-primary btn-sm btn-success">View Simulation</a>
+            <div class="game-card-actions inprogress-game-card-simulate">
+              <a href="#" role="button" class="simulate btn btn-sm btn-sim">View Simulation</a>
             </div>
           </div>
         </div></template>
 
 <template id="scheduled-game-template">
         <!-- scheduled game template -->
-        <div class="card text-white game-card scheduled-game-card">
+        <div class="card game-card scheduled-game-card">
           <div class="card-body game-card-body scheduled-game-card-body">
-            <div class="game-card-team1 scheduled-game-card-team1">
-              <h6 class="game-card-team-name-header">
-                <span class="team1color team1name">Team 1</span> <small><span class="team1color team1record">(W-L)</span></small>
-              </h6>
+            <div class="game-card-team game-card-team1 scheduled-game-card-team1">
+              <span class="team-swatch team1color"></span>
+              <span class="game-card-team-name"><span class="team1color team1name">Team 1</span> <span class="game-card-record team1record"></span></span>
             </div>
-            <div class="game-card-team2 scheduled-game-card-team2">
-              <h6 class="game-card-team-name-header">
-                <span class="team2color team2name">Team 2</span> <small><span class="team2color team2record">(W-L)</span></small>
-              </h6>
+            <div class="game-card-team game-card-team2 scheduled-game-card-team2">
+              <span class="team-swatch team2color"></span>
+              <span class="game-card-team-name"><span class="team2color team2name">Team 2</span> <span class="game-card-record team2record"></span></span>
             </div>
-            <div class="game-card-map scheduled-game-card-map">
-              Map: <span class="map-name">Map Name</span>
+            <div class="game-card-meta">
+              <span class="game-card-map scheduled-game-card-map"><span class="game-card-label">Map</span> <span class="map-name">Map Name</span></span>
             </div>
           </div>
         </div></template>
 
 <template id="scheduled-postgame-template">
         <!-- postseason scheduled game -->
-        <div class="card text-white game-card scheduled-game-card postseason-game-card">
+        <div class="card game-card scheduled-game-card postseason-game-card">
           <div class="card-body game-card-body scheduled-game-card-body postseason-game-card-body">
-            <h5 class="card-title game-card-description postseason-game-card-description"><span class="postseason-game-description">Game _, _ Series</span></h5>
-
-            <div class="game-card-team1 scheduled-game-card-team1">
-              <h6 class="game-card-team-name-header">
-                <span class="team1color team1name">Team 1</span> <small><span class="team1color team1seed">(0)</span></small>
-              </h6>
+            <div class="game-card-description postseason-game-card-description"><span class="postseason-game-description"></span></div>
+            <div class="game-card-team game-card-team1 scheduled-game-card-team1">
+              <span class="team-swatch team1color"></span>
+              <span class="game-card-team-name"><span class="team1color team1name">Team 1</span> <span class="game-card-record team1seed"></span></span>
             </div>
-            <div class="game-card-team2 scheduled-game-card-team2">
-              <h6 class="game-card-team-name-header">
-                <span class="team2color team2name">Team 2</span> <small><span class="team2color team2seed">(0)</span></small>
-              </h6>
+            <div class="game-card-team game-card-team2 scheduled-game-card-team2">
+              <span class="team-swatch team2color"></span>
+              <span class="game-card-team-name"><span class="team2color team2name">Team 2</span> <span class="game-card-record team2seed"></span></span>
             </div>
-            <div class="game-card-map scheduled-game-card-map">
-              Map: <span class="map-name">Map Name</span>
+            <div class="game-card-meta">
+              <span class="game-card-map scheduled-game-card-map"><span class="game-card-label">Map</span> <span class="map-name">Map Name</span></span>
             </div>
           </div>
         </div></template>
@@ -740,7 +669,7 @@ add this to pelican pages:
 
 <div class="container invisible" id="container-mode40plus">
 
-  <h2 class="text-center landing-header">Season <span id="landing-header-season-number">_</span> has ended.<h2>
+  <h2 class="text-center landing-header">Season <span id="landing-header-season-number">_</span> has ended.</h2>
 
   <div class="row text-center notify-header invisible loading-message" id="mode33-loading-message">
     <div class="col-lg-12">
@@ -796,6 +725,7 @@ add this to pelican pages:
   </div>
 </noscript>
 
+</main>
 
 <script type="text/javascript" src="https://viii.integration.golly456.life/theme/js/geturl.js"></script>
 <script type="text/javascript" src="https://viii.integration.golly456.life/theme/js/tables.js"></script>
@@ -808,17 +738,13 @@ add this to pelican pages:
   <script type="text/javascript" src="https://viii.integration.golly456.life/theme/js/flipdown.min.js"></script>
   <script type="text/javascript" src="index.js"></script>
 
-<footer id="contentinfo" class="body">
-    <div class="text-center">
-    <p>Golly is a product of the Metablaseball Research Laboratory at Hellmouth Community College</p>
-
-    <p>Golly.Life Chief Architect: Ch4zm of Hellmouth</p>
-
-    <p>Golly Commissioner: Rubrix Helicopter</p>
-
-    <p>
-        Licensed under the <a rel="license" href="https://mit-license.org/">MIT License</a> - <a href="https://github.com/golly-splorts/gollyx-viii-pelican/blob/main/ATTRIBUTION">Attribution</a>
-    </p>
+<footer id="contentinfo" class="site-footer">
+    <div class="site-footer-inner">
+      <a class="site-footer-cups" href="https://golly.life">All Golly cups at golly.life</a>
+      <p>Golly is a product of the Metablaseball Research Laboratory at Hellmouth Community College</p>
+      <p>Golly.Life Chief Architect: <a href="https://github.com/ch4zm">Ch4zm of Hellmouth</a></p>
+      <p>Golly Commissioner: Rubrix Helicopter</p>
+      <p>Licensed under the <a rel="license" href="https://mit-license.org/">MIT License</a> - <a href="https://github.com/golly-splorts/gollyx-viii-pelican/blob/main/ATTRIBUTION">Attribution</a></p>
     </div>
 
 <!-- Default Statcounter code for Golly https://golly.life -->
